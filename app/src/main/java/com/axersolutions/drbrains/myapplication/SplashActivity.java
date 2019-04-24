@@ -12,7 +12,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        final int SPLASH_DISPLAY_LENGTH = 5000; //splash screen will be shown for 5 seconds
+        final int SPLASH_DISPLAY_LENGTH = 10; //splash screen will be shown for 5 seconds
 
 
         new Handler().postDelayed(new Runnable() {

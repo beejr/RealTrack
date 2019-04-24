@@ -1,20 +1,28 @@
 package com.axersolutions.drbrains.myapplication;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static List<AnimalData> animal_list;
 
     private RecyclerView recyclerView;
     private AnimalAdapter adapter;
@@ -77,6 +85,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createcard() {
+
+        animal_list = new ArrayList<>();
+
+        myroof.child("1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot data : dataSnapshot.getChildren()){
+
+                    animal_name = String.valueOf(data.child("name").getValue());
+                    animal_location = String.valueOf(data.child("animal_location").getValue());
+                    camera_name = String.valueOf(data.child("location").getValue());
+                    camera_location = String.valueOf(data.child("cam_location").getValue());
+                    current_status = String.valueOf(data.child("status").getValue());
+                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
+                    animal_list.add(animalData);
+                    Log.i("ptag",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+
+
+
+
         AnimalData animalData = new AnimalData(animal_name,animal_location,"Camera ONE",camera_location,current_status,R.drawable.tiger);
         animalDataArrayList.add(animalData);
         AnimalData animalData1 = new AnimalData(animal_name,animal_location,"Camera TWO",camera_location,current_status,R.drawable.tiger);

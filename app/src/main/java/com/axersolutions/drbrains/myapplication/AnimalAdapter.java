@@ -27,6 +27,13 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
+
+    MyListAdapter adapter1;
+    MyListAdapter adapter2;
+
+
+
+
     private Context context;
     private ArrayList<AnimalData> animalDataArrayList;
     PopupWindow popupWindow;
@@ -34,7 +41,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
     TextView nofofanimals,noofanimals_result;
 
     TextView camera,name;
-    List<AnimalData> animal_list,cam1,cam2;
     LinearLayout linearLayout ;
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -54,6 +60,9 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
         linearLayout = (LinearLayout)viewholder.findViewById(R.id.image_layout);
 
+
+        Log.i("viewcount","this comes twice");
+
         return new AnimalHolder(viewholder);
 
     }
@@ -61,6 +70,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
     @Override
     public void onBindViewHolder(@NonNull final AnimalHolder animalHolder, final int position) {
 
+        List<AnimalData> animal_list = MainActivity.animal_list;
         AnimalData animalData = animalDataArrayList.get(position);
         animalHolder.setDetails(animalData);
 
@@ -71,41 +81,30 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
         nofofanimals = (TextView)popupView.findViewById(R.id.noofanimals);
         noofanimals_result = (TextView)popupView.findViewById(R.id.noofanimals_result);
-        animal_list = new ArrayList<>();
-        cam1 = new ArrayList<>();
-        cam2 = new ArrayList<>();
-             myroof.child("1").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for(DataSnapshot data : dataSnapshot.getChildren()){
 
-                        animal_name = String.valueOf(data.child("name").getValue());
-                        animal_location = String.valueOf(data.child("animal_location").getValue());
-                        camera_name = String.valueOf(data.child("location").getValue());
-                        camera_location = String.valueOf(data.child("cam_location").getValue());
-                        current_status = String.valueOf(data.child("status").getValue());
-                        AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
-                        cam2.add(animalData);
-                        Log.e("ptag",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
+        myroof.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              int  childcount = (int) dataSnapshot.child("1").getChildrenCount();
+                Log.d("childcount",Integer.toString(childcount));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-
-        AnimalData animalDatanew = new AnimalData("antelope","aaavo","anganeonnula","ivde","detecting",R.drawable.deer);
-        cam1.add(animalDatanew);
-
-        animalDatanew = new AnimalData("elephant","h,mmmm","ammmee","jaaani","detect",R.drawable.elephant);
-        cam1.add(animalDatanew);
+            }
+        });
 
 
-        Log.e("ptag1",cam1.toString());
 
-        Log.e("ptag2",cam2.toString());
 
+
+
+
+
+
+        adapter1 = new MyListAdapter(popupView.getContext(),R.layout.custom_listview,animal_list);
+        listView.setAdapter(adapter1);
+        Log.e("ptag0inside","inside0");
 
          animalHolder.itemView.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -113,25 +112,14 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
                 int i = animalHolder.getAdapterPosition();
                 Log.e("pri", String.valueOf(animalHolder.getAdapterPosition()));
-                Log.e("prija", String.valueOf(animalHolder.getItemId()));
-                Log.e("prijaasd", String.valueOf(animalHolder.getPosition()));
-                Log.e("prijaasdqwe", String.valueOf(animalHolder.getLayoutPosition()));
-
-              if(i == 0){
-                    MyListAdapter myListAdapter = new MyListAdapter(popupView.getContext(),R.layout.custom_listview,cam1);
-                    listView.setAdapter(myListAdapter);
-                  Log.e("ptag0inside","inside0");
+//                Log.e("prija", String.valueOf(animalHolder.getItemId()));
+//                Log.e("prijaasd", String.valueOf(animalHolder.getPosition()));
+//                Log.e("prijaasdqwe", String.valueOf(animalHolder.getLayoutPosition()));
 
 
 
-              }
-                else if(i == 1) {
-                   MyListAdapter myListAdapter = new MyListAdapter(popupView.getContext(),R.layout.custom_listview,cam1);
-                   listView.setAdapter(myListAdapter);
 
-                  //Log.e("ptag1inside","inside1");
 
-                }
                  popupView.setAnimation(AnimationUtils.loadAnimation(context,R.anim.myanim));
                  // create the popup window
                  // lets taps outside the popup also dismiss it
