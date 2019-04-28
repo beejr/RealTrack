@@ -27,17 +27,19 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
+    List<AnimalData> animal_list_one;
+    List<AnimalData> animal_list_two;
 
-    MyListAdapter adapter1;
-    MyListAdapter adapter2;
+
+    MyListAdapter adapter1,adapter2;
 
 
 
 
     private Context context;
-    private ArrayList<AnimalData> animalDataArrayList;
+    private ArrayList<AnimalData> animalDataArrayList=SplashActivity.animalDataArrayList;
     PopupWindow popupWindow;
-    ListView listView;
+    ListView listView,testlistview;
     TextView nofofanimals,noofanimals_result;
 
     TextView camera,name;
@@ -70,14 +72,20 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
     @Override
     public void onBindViewHolder(@NonNull final AnimalHolder animalHolder, final int position) {
 
-        List<AnimalData> animal_list = MainActivity.animal_list;
+//        animal_list_one = MainActivity.animal_list_one;
+        animal_list_one = SplashActivity.animal_list_one;
+
+        animal_list_two = SplashActivity.animal_list_two;
+
         AnimalData animalData = animalDataArrayList.get(position);
         animalHolder.setDetails(animalData);
 
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(LAYOUT_INFLATER_SERVICE);
-        final View popupView = inflater.inflate(R.layout.popup,null);
+       final View popupView = inflater.inflate(R.layout.popup,null);
 
         listView=(ListView)popupView.findViewById(R.id.list);
+        testlistview=(ListView)popupView.findViewById(R.id.list1);
+
 
         nofofanimals = (TextView)popupView.findViewById(R.id.noofanimals);
         noofanimals_result = (TextView)popupView.findViewById(R.id.noofanimals_result);
@@ -96,31 +104,34 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
 
 
-
-
-
-
-
-
-        adapter1 = new MyListAdapter(popupView.getContext(),R.layout.custom_listview,animal_list);
+        adapter1 = new MyListAdapter(popupView.getContext(),R.layout.custom_listview,animal_list_one);
         listView.setAdapter(adapter1);
-        Log.e("ptag0inside","inside0");
-
-         animalHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        adapter1 = new MyListAdapter(popupView.getContext(),R.layout.custom_listview,animal_list_two);
+        testlistview.setAdapter(adapter1);
+        testlistview.setVisibility(View.GONE);
+        animalHolder.itemView.setOnClickListener(new View.OnClickListener() {
           @Override
               public void onClick(View view) {
 
                 int i = animalHolder.getAdapterPosition();
                 Log.e("pri", String.valueOf(animalHolder.getAdapterPosition()));
-//                Log.e("prija", String.valueOf(animalHolder.getItemId()));
+                Log.e("prija", String.valueOf(animalHolder.getItemId()));
 //                Log.e("prijaasd", String.valueOf(animalHolder.getPosition()));
 //                Log.e("prijaasdqwe", String.valueOf(animalHolder.getLayoutPosition()));
+                    if(i == -1 ){
+                        Log.e("p","ivide ethi");
+                        testlistview.setVisibility(View.GONE);
+                    }
+                    else if (i == 1){
+                        listView.setVisibility(View.GONE);
+                        testlistview.setVisibility(View.VISIBLE);
+                    }
 
 
 
 
 
-                 popupView.setAnimation(AnimationUtils.loadAnimation(context,R.anim.myanim));
+              popupView.setAnimation(AnimationUtils.loadAnimation(context,R.anim.myanim));
                  // create the popup window
                  // lets taps outside the popup also dismiss it
                  boolean focusable = true;
@@ -130,7 +141,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
                  //display the popup window
                  popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                  popupWindow.setOutsideTouchable(false);
-                }
+           }
             });
 
         }
@@ -142,6 +153,8 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
     public int getItemCount() {
         return animalDataArrayList.size();
     }
+
+
 
 
 }

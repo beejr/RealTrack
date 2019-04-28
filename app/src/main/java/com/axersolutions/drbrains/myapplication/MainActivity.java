@@ -22,21 +22,21 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static List<AnimalData> animal_list;
+    public static List<AnimalData> animal_list_one,animal_list_two;
 
     private RecyclerView recyclerView;
     private AnimalAdapter adapter;
     private ArrayList<AnimalData> animalDataArrayList;
     private EditText search;
-    private String animal_name,animal_location,camera_name,camera_location,current_status;
+//    private String animal_name,animal_location,camera_name,camera_location,current_status;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myroof = database.getReference();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
+        animalDataArrayList = new ArrayList<>();
+        animalDataArrayList = SplashActivity.animalDataArrayList;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.swing_up_left);
@@ -46,12 +46,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.startAnimation(animation);
 
-        animalDataArrayList = new ArrayList<>();
+
    //       cam1 = new ArrayList<>();
    //     cam2 = new ArrayList<>();
 
+
         adapter = new AnimalAdapter(this,animalDataArrayList);
-        createcard();
+
+
+
+//        createcard();
+
+
 
         recyclerView.setAdapter(adapter);
 
@@ -84,14 +90,15 @@ public class MainActivity extends AppCompatActivity {
 */
     }
 
-    private void createcard() {
+  /*  private void createcard() {
 
-        animal_list = new ArrayList<>();
+        animal_list_one = new ArrayList<>();
+        animal_list_two = new ArrayList<>();
 
-        myroof.child("1").addValueEventListener(new ValueEventListener() {
+        myroof.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot data : dataSnapshot.getChildren()){
+                for(DataSnapshot data : dataSnapshot.child("1").getChildren()){
 
                     animal_name = String.valueOf(data.child("name").getValue());
                     animal_location = String.valueOf(data.child("animal_location").getValue());
@@ -99,10 +106,24 @@ public class MainActivity extends AppCompatActivity {
                     camera_location = String.valueOf(data.child("cam_location").getValue());
                     current_status = String.valueOf(data.child("status").getValue());
                     AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
-                    animal_list.add(animalData);
+
+                    animal_list_one.add(animalData);
                     Log.i("ptag",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
 
                 }
+                for(DataSnapshot data : dataSnapshot.child("2").getChildren()){
+
+                    animal_name = String.valueOf(data.child("name").getValue());
+                    animal_location = String.valueOf(data.child("animal_location").getValue());
+                    camera_name = String.valueOf(data.child("location").getValue());
+                    camera_location = String.valueOf(data.child("cam_location").getValue());
+                    current_status = String.valueOf(data.child("status").getValue());
+                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
+                    animal_list_two.add(animalData);
+                    Log.i("ptag",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
+
+                }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -112,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+      *//*  AnimalData animalDatatest = new AnimalData("yoo","ho","ho","ho","ho",R.drawable.cheetah);
+
+        animal_list_one.add(animalDatatest);*//*
 
         AnimalData animalData = new AnimalData(animal_name,animal_location,"Camera ONE",camera_location,current_status,R.drawable.tiger);
         animalDataArrayList.add(animalData);
@@ -119,6 +143,6 @@ public class MainActivity extends AppCompatActivity {
         animalDataArrayList.add(animalData1);
 
 
-    }
+    }*/
 
 }
