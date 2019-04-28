@@ -1,12 +1,11 @@
 package com.axersolutions.drbrains.myapplication;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +23,6 @@ public class SplashActivity extends AppCompatActivity {
 
     public static ArrayList<AnimalData> animalDataArrayList=new ArrayList<>();
 
-
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myroof = database.getReference();
 
@@ -38,16 +36,14 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         animalDataArrayList=new ArrayList<>();
+
+        //Insert data from Firebase to the Card
         createcard();
 
-
         final int SPLASH_DISPLAY_LENGTH = 5000; //splash screen will be shown for 5 seconds
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 finish();
@@ -59,21 +55,20 @@ public class SplashActivity extends AppCompatActivity {
     private void createcard() {
 
         animal_list_one = new ArrayList<>();
-        //animal_list_two = new ArrayList<>();
+        animal_list_two = new ArrayList<>();
 
         myroof.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for(DataSnapshot data : dataSnapshot.child("Cameras").getChildren()){
-
                     camera_name = String.valueOf(data.getValue());
                     AnimalData animalData = new AnimalData(" "," ",camera_name," "," ",R.drawable.cheetah);
                     animalDataArrayList.add(animalData);
                     Log.i("Camera List",camera_name);
                 }
-                for(DataSnapshot data : dataSnapshot.child("1").getChildren()){
 
+                for(DataSnapshot data : dataSnapshot.child("1").getChildren()){
                     animal_name = String.valueOf(data.child("name").getValue());
                     animal_location = String.valueOf(data.child("animal_location").getValue());
                     camera_name = String.valueOf(data.child("location").getValue());
@@ -84,8 +79,8 @@ public class SplashActivity extends AppCompatActivity {
                     Log.i("Camera ONE",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
 
                 }
-                for(DataSnapshot data : dataSnapshot.child("2").getChildren()){
 
+                for(DataSnapshot data : dataSnapshot.child("2").getChildren()){
                     animal_name = String.valueOf(data.child("name").getValue());
                     animal_location = String.valueOf(data.child("animal_location").getValue());
                     camera_name = String.valueOf(data.child("location").getValue());
@@ -94,7 +89,6 @@ public class SplashActivity extends AppCompatActivity {
                     AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
                     animal_list_two.add(animalData);
                     Log.i("Camera Two",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
-
                 }
 
             }
@@ -105,16 +99,6 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-
-      /*  AnimalData animalDatatest = new AnimalData("yoo","ho","ho","ho","ho",R.drawable.cheetah);
-
-        animal_list_one.add(animalDatatest);*/
-
-     /*   AnimalData animalData = new AnimalData(animal_name,animal_location,"Camera ONE",camera_location,current_status,R.drawable.tiger);
-        animalDataArrayList.add(animalData);
-        AnimalData animalData1 = new AnimalData(animal_name,animal_location,"Camera TWO",camera_location,current_status,R.drawable.tiger);
-        animalDataArrayList.add(animalData1);
-*/
 
     }
 }

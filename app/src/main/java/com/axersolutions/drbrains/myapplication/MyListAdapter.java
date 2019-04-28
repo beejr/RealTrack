@@ -1,14 +1,17 @@
 package com.axersolutions.drbrains.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView,  @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         //And for this we need a layoutinflater
         LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -47,7 +50,20 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
         //adding values to the list item
         imageView.setImageDrawable(context.getResources().getDrawable(animalData.getAnimal_image()));
         animal_name.setText(animalData.getAnimal_name());
-        animal_status. setText(animalData.getCurrent_status());
+        animal_status.setText(animalData.getCurrent_status());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,String.valueOf(position),Toast.LENGTH_SHORT).show();
+                Intent tracking_intent = new Intent(context, Tracking.class);
+
+//                view.setAnimation(AnimationUtils.makeInAnimation(context,true));
+                  view.startAnimation(AnimationUtils.loadAnimation(context,R.anim.swing_up_left));
+                  context.startActivity(tracking_intent);
+            }
+        });
+
 
         return view;
     }

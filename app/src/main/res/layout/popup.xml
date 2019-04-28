@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:layout_gravity="center"
-                android:text="Number of Animals Present:"
+                android:text="Number of Animals Present: "
                 android:textColor="@color/colorAccent"/>
 
 
@@ -53,7 +53,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="2     "
                 android:layout_marginStart="30dp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"/>
