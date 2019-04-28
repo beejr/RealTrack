@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private AnimalAdapter adapter;
-    private ArrayList<AnimalData> animalDataArrayList;
     private EditText search;
 //    private String animal_name,animal_location,camera_name,camera_location,current_status;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -35,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        animalDataArrayList = new ArrayList<>();
-        animalDataArrayList = SplashActivity.animalDataArrayList;
+         ArrayList<AnimalData> animalDataArrayList = SplashActivity.animalDataArrayList;
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.swing_up_left);
@@ -45,10 +45,23 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.startAnimation(animation);
+       /* Log.d("arraylist",animalDataArrayList.toString());
+        ArrayList<AnimalData> xy = new ArrayList<>();
+
+        if(animalDataArrayList== xy ){
+
+        AnimalData animalData = new AnimalData(" "," ","Camera ONE"," "," ",R.drawable.tiger);
+        animalDataArrayList.add(animalData);
 
 
-   //       cam1 = new ArrayList<>();
-   //     cam2 = new ArrayList<>();
+        AnimalData animalData1 = new AnimalData(" "," ","Camera TWO"," "," ",R.drawable.tiger);
+        animalDataArrayList.add(animalData1);
+        }*/
+
+
+
+
+
 
 
         adapter = new AnimalAdapter(this,animalDataArrayList);

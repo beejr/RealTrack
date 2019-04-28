@@ -37,6 +37,7 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash);
 
+        animalDataArrayList=new ArrayList<>();
         createcard();
 
 
@@ -63,6 +64,14 @@ public class SplashActivity extends AppCompatActivity {
         myroof.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot data : dataSnapshot.child("Cameras").getChildren()){
+
+                    camera_name = String.valueOf(data.getValue());
+                    AnimalData animalData = new AnimalData(" "," ",camera_name," "," ",R.drawable.cheetah);
+                    animalDataArrayList.add(animalData);
+                    Log.i("Camera List",camera_name);
+                }
                 for(DataSnapshot data : dataSnapshot.child("1").getChildren()){
 
                     animal_name = String.valueOf(data.child("name").getValue());
@@ -71,9 +80,8 @@ public class SplashActivity extends AppCompatActivity {
                     camera_location = String.valueOf(data.child("cam_location").getValue());
                     current_status = String.valueOf(data.child("status").getValue());
                     AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
-
                     animal_list_one.add(animalData);
-                    Log.i("ptag",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
+                    Log.i("Camera ONE",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
 
                 }
                 for(DataSnapshot data : dataSnapshot.child("2").getChildren()){
@@ -85,7 +93,7 @@ public class SplashActivity extends AppCompatActivity {
                     current_status = String.valueOf(data.child("status").getValue());
                     AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
                     animal_list_two.add(animalData);
-                    Log.i("ptag",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
+                    Log.i("Camera Two",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
 
                 }
 
@@ -102,11 +110,11 @@ public class SplashActivity extends AppCompatActivity {
 
         animal_list_one.add(animalDatatest);*/
 
-        AnimalData animalData = new AnimalData(animal_name,animal_location,"Camera ONE",camera_location,current_status,R.drawable.tiger);
+     /*   AnimalData animalData = new AnimalData(animal_name,animal_location,"Camera ONE",camera_location,current_status,R.drawable.tiger);
         animalDataArrayList.add(animalData);
         AnimalData animalData1 = new AnimalData(animal_name,animal_location,"Camera TWO",camera_location,current_status,R.drawable.tiger);
         animalDataArrayList.add(animalData1);
-
+*/
 
     }
 }
