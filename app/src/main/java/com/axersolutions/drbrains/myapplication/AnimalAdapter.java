@@ -1,6 +1,7 @@
 package com.axersolutions.drbrains.myapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
 
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
@@ -64,7 +66,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
         animal_list_two = SplashActivity.animal_list_two;
 
         AnimalData animalData = animalDataArrayList.get(position);
-        animalHolder.setDetails(animalData);
+        animalHolder.setDetails(animalData,position);
 
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(LAYOUT_INFLATER_SERVICE);
         final View popupView = inflater.inflate(R.layout.popup,null);
@@ -81,21 +83,33 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
         testlistview.setAdapter(adapter1);
         testlistview.setVisibility(View.GONE);
 
+
+
         noofanimals_result.setText(String.valueOf(animal_list_one.size()));
         animalHolder.itemView.setOnClickListener(new View.OnClickListener()
         {
           @Override
               public void onClick(View view) {
                     int i = animalHolder.getAdapterPosition();
-                    if(i == -1 ){
+
                         Log.e("p","ivide ethi");
                         testlistview.setVisibility(View.GONE);
 
-                    }
-                    else if (i == 1){
+                        SharedPreferences.Editor editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
+                        editor.putInt("list_id", 1);
+                        editor.commit();
+
+
+                     if (i == 1){
                         noofanimals_result.setText(String.valueOf(animal_list_two.size()));
                         listView.setVisibility(View.GONE);
                         testlistview.setVisibility(View.VISIBLE);
+
+                         editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
+                        editor.putInt("list_id", 2);
+                        editor.commit();
+
+
                     }
 
                      popupView.setAnimation(AnimationUtils.loadAnimation(context,R.anim.myanim));

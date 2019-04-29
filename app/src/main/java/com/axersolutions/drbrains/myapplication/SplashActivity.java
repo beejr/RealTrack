@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,8 +19,11 @@ import java.util.List;
 
 public class SplashActivity extends AppCompatActivity {
 
-    public static List<AnimalData> animal_list_one =new ArrayList<>();;
-    public static List<AnimalData> animal_list_two =new ArrayList<>();;
+    public static List<AnimalData> animal_list_one =new ArrayList<>();
+    public static List<AnimalData> animal_list_two =new ArrayList<>();
+    public static List<String> animal_list =new ArrayList<>();
+    public static List<String> camera_list =new ArrayList<>();
+
 
     public static ArrayList<AnimalData> animalDataArrayList=new ArrayList<>();
 
@@ -33,6 +37,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_splash);
 
         animalDataArrayList=new ArrayList<>();
@@ -40,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
         //Insert data from Firebase to the Card
         createcard();
 
-        final int SPLASH_DISPLAY_LENGTH = 5000; //splash screen will be shown for 5 seconds
+        final int SPLASH_DISPLAY_LENGTH = 3000; //splash screen will be shown for 5 seconds
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -54,12 +61,19 @@ public class SplashActivity extends AppCompatActivity {
 
     private void createcard() {
 
+
+
         animal_list_one = new ArrayList<>();
         animal_list_two = new ArrayList<>();
+        animal_list = new ArrayList<>();
 
         myroof.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                animal_list_one = new ArrayList<>();
+                animal_list_two = new ArrayList<>();
+                animal_list = new ArrayList<>();
 
                 for(DataSnapshot data : dataSnapshot.child("Cameras").getChildren()){
                     camera_name = String.valueOf(data.getValue());
@@ -76,7 +90,11 @@ public class SplashActivity extends AppCompatActivity {
                     current_status = String.valueOf(data.child("status").getValue());
                     AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
                     animal_list_one.add(animalData);
+                  //  AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
+                    //animal_list.add(animalsCamera);
+                    animal_list.add(animal_name);
                     Log.i("Camera ONE",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
+
 
                 }
 
@@ -88,6 +106,9 @@ public class SplashActivity extends AppCompatActivity {
                     current_status = String.valueOf(data.child("status").getValue());
                     AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
                     animal_list_two.add(animalData);
+                   // AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
+                    //animal_list.add(animalsCamera);
+                    animal_list.add(animal_name);
                     Log.i("Camera Two",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
                 }
 

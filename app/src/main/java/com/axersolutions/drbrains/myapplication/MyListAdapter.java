@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
                 Intent tracking_intent = new Intent(context, Tracking.class);
 
 //                view.setAnimation(AnimationUtils.makeInAnimation(context,true));
-                  view.startAnimation(AnimationUtils.loadAnimation(context,R.anim.swing_up_left));
+                  tracking_intent.putExtra("pos",position);
                   context.startActivity(tracking_intent);
             }
         });

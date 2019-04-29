@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/activity_main"
+    android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
     tools:context=".MainActivity">
 <!--
     <LinearLayout
@@ -23,7 +24,78 @@
         android:hint="   Search Animals"/>
 
     </LinearLayout>
+
 !-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+       <!-- <ToggleButton
+            android:id="@+id/toggle_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Camera View"
+            android:textOn="Animal View"
+            android:textOff="Camera View" />-->
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/tigercartoon"/>
+
+
+        <Switch
+            android:id="@+id/toggle_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textColor="#fad284"
+            android:checked="true"
+            android:textColorHint="#fad284"
+            android:textOff="A"
+            android:textOn="C" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/cameracartoon"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:id="@+id/animal_view_container">
+
+        <!-- Editext for Search -->
+        <EditText
+            android:id="@+id/inputSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search products.."
+            android:inputType="textVisiblePassword" />
+
+        <!-- List View -->
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/camera_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -31,5 +103,6 @@
         android:layout_marginTop="15dp">
     </android.support.v7.widget.RecyclerView>
 
+    </LinearLayout>
 
 </LinearLayout>
