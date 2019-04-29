@@ -2,6 +2,7 @@ package com.axersolutions.drbrains.myapplication;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,17 +37,23 @@ public class AnimalHolder extends RecyclerView.ViewHolder {
         List<AnimalData> animal_list_one = SplashActivity.animal_list_one;
         List<AnimalData> animal_list_two = SplashActivity.animal_list_two;
         camera_name.setText(animalData.getCamera_name());
+
         camera_icon.setImageResource(R.drawable.newred);
 
         if(position==0){
 
             int size = animal_list_one.size();
 
-            for(int i=1;i<=size;i++){
+            for(int i=0;i<size;i++){
+
+                Log.i("name", String.valueOf(animal_list_one.get(i).getAnimal_image()));
+
                 final ImageView imageView = new ImageView(itemView.getContext());
                 imageView.setLayoutParams(new LinearLayout.LayoutParams(160, 160)); // value is in pixels
 
-                imageView.setImageResource(R.drawable.cheetah);
+  //              imageView.setImageDrawable(itemView.getResources().getDrawable(animal_list_one.get(i).getAnimal_image()));
+
+                imageView.setImageResource(R.drawable.pawprint);
                 image_layout.addView(imageView);
             }
         }
@@ -55,11 +62,13 @@ public class AnimalHolder extends RecyclerView.ViewHolder {
 
                 int size = animal_list_two.size();
 
-                for(int i=1;i<=size;i++){
+                for(int i=0;i<size;i++){
                     final ImageView imageView = new ImageView(itemView.getContext());
                     imageView.setLayoutParams(new LinearLayout.LayoutParams(160, 160)); // value is in pixels
 
-                    imageView.setImageResource(R.drawable.cheetah);
+                    //imageView.setImageDrawable(itemView.getResources().getDrawable(animal_list_two.get(i).getAnimal_image()));
+
+                     imageView.setImageResource(R.drawable.pawprint);
                     image_layout.addView(imageView);
                 }
             }

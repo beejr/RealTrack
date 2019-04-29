@@ -26,10 +26,11 @@
     </LinearLayout>
 
 !-->
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
@@ -91,18 +92,27 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/camera_view_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/camera_view_container"
+            android:layout_width="match_parent"
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
-    </android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
+<android.support.v4.widget.SwipeRefreshLayout
 
-    </LinearLayout>
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/swipe">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+        </android.support.v7.widget.RecyclerView>
+</android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+
+
+
 
 </LinearLayout>

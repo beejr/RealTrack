@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.WindowManager;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -67,28 +66,48 @@ public class SplashActivity extends AppCompatActivity {
         animal_list_two = new ArrayList<>();
         animal_list = new ArrayList<>();
 
-        myroof.addValueEventListener(new ValueEventListener() {
+        myroof.child("Cameras").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+/*
                 animal_list_one = new ArrayList<>();
                 animal_list_two = new ArrayList<>();
-                animal_list = new ArrayList<>();
+                animal_list = new ArrayList<>();*/
 
-                for(DataSnapshot data : dataSnapshot.child("Cameras").getChildren()){
+                for(DataSnapshot data : dataSnapshot.getChildren()){
                     camera_name = String.valueOf(data.getValue());
-                    AnimalData animalData = new AnimalData(" "," ",camera_name," "," ",R.drawable.cheetah);
+                    AnimalData animalData = new AnimalData(" "," ",camera_name,"Sector1"," ",R.drawable.elephant);
                     animalDataArrayList.add(animalData);
                     Log.i("Camera List",camera_name);
                 }
 
-                for(DataSnapshot data : dataSnapshot.child("1").getChildren()){
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        myroof.child("1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                animal_list = new ArrayList<>();
+                animal_list_one = new ArrayList<>();
+        /*        animal_list_two = new ArrayList<>();
+
+*/
+                for(DataSnapshot data : dataSnapshot.getChildren()){
                     animal_name = String.valueOf(data.child("name").getValue());
                     animal_location = String.valueOf(data.child("animal_location").getValue());
                     camera_name = String.valueOf(data.child("location").getValue());
                     camera_location = String.valueOf(data.child("cam_location").getValue());
                     current_status = String.valueOf(data.child("status").getValue());
-                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
+
+                   /* int resourceIdone = getResources().
+                            getIdentifier(animal_name, "drawable", getPackageName());
+
+                    animal_name.toLowerCase();*/
+                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.pawprint);
                     animal_list_one.add(animalData);
                   //  AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
                     //animal_list.add(animalsCamera);
@@ -98,15 +117,40 @@ public class SplashActivity extends AppCompatActivity {
 
                 }
 
-                for(DataSnapshot data : dataSnapshot.child("2").getChildren()){
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        myroof.child("2").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                animal_list = new ArrayList<>();
+                animal_list_two = new ArrayList<>();
+/*
+                animal_list_one = new ArrayList<>();
+                animal_list = new ArrayList<>();
+*/
+
+
+
+                for(DataSnapshot data : dataSnapshot.getChildren()){
                     animal_name = String.valueOf(data.child("name").getValue());
                     animal_location = String.valueOf(data.child("animal_location").getValue());
                     camera_name = String.valueOf(data.child("location").getValue());
                     camera_location = String.valueOf(data.child("cam_location").getValue());
                     current_status = String.valueOf(data.child("status").getValue());
-                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.cheetah);
+/*
+
+                    int resourceIdtwo = getResources().
+                            getIdentifier(animal_name, "drawable", getPackageName());
+*/
+
+                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.pawprint);
                     animal_list_two.add(animalData);
-                   // AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
+                    //AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
                     //animal_list.add(animalsCamera);
                     animal_list.add(animal_name);
                     Log.i("Camera Two",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);

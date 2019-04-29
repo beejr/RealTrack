@@ -29,16 +29,17 @@
             android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action00"
+            android:alpha="0.5"
             android:orientation="horizontal"
             android:gravity="center">
 
            </LinearLayout>
 
-        <View
+     <!--   <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -47,11 +48,11 @@
             android:gravity="center">
         </LinearLayout>
 
-        <View
+     <!--   <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -60,11 +61,11 @@
             android:gravity="center">
         </LinearLayout>
 
-        <View
+     <!--   <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -78,11 +79,11 @@
 
 <!-- Second Row!-->
 
-    <View
+   <!-- <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
-
+-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -96,22 +97,24 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+  <!--      <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
             android:id="@+id/action11"
             android:orientation="horizontal">
         </LinearLayout>
+<!--
 
         <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
+-->
 
         <LinearLayout
             android:layout_width="105dp"
@@ -120,11 +123,11 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+     <!--   <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -136,11 +139,11 @@
 
 <!-- Third Row!-->
 
-    <View
+    <!--<View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
-
+-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -154,11 +157,11 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+     <!--   <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -166,11 +169,11 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+    <!--    <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -178,11 +181,11 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+      <!--  <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -195,11 +198,11 @@
 
 <!-- Forth Row!-->
 
-    <View
+   <!-- <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
-
+-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -213,11 +216,11 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+     <!--   <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -225,22 +228,24 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+      <!--  <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
             android:id="@+id/action32"
             android:orientation="horizontal">
         </LinearLayout>
+<!--
 
         <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
+-->
 
         <LinearLayout
             android:layout_width="100dp"
@@ -251,13 +256,13 @@
     </LinearLayout>
 
 <!-- Fifth Row!-->
-
+<!--
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
 
-    <LinearLayout
+  -->  <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/action4"
@@ -269,22 +274,24 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+    <!--    <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
             android:id="@+id/action41"
             android:orientation="horizontal">
         </LinearLayout>
+<!--
 
         <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
+-->
 
         <LinearLayout
             android:layout_width="105dp"
@@ -293,11 +300,11 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
+     <!--   <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
-
+-->
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -311,23 +318,85 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/status"
-            android:fontFamily="sans-serif-thin"
-            android:textSize="30sp"
+            android:fontFamily="serif-monospace"
+            android:textSize="20sp"
             android:text="Animal:"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/time"
-            android:textSize="30dp"
+            android:id="@+id/status_res"
             android:fontFamily="sans-serif-thin"
-            android:text="Time:"/>
+            android:textSize="30sp"
+            android:textColor="#63c900"
+            android:hint="Tracking animal is "/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/time"
+                android:textSize="20dp"
+                android:fontFamily="serif-monospace"
+                android:text="Time:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/time_res"
+                android:fontFamily="sans-serif-thin"
+                android:textSize="30sp"
+                android:textColor="#63c900"
+                android:hint="No result to display"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/animal_location"
+                android:textSize="20dp"
+                android:fontFamily="serif-monospace"
+                android:text="Animal Location:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/animal_location_res"
+                android:fontFamily="sans-serif-thin"
+                android:textSize="30sp"
+                android:textColor="#63c900"
+                android:hint="No result to display"/>
+
+        </LinearLayout>
 
 
     </LinearLayout>

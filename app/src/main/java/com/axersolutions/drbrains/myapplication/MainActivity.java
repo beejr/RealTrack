@@ -2,6 +2,8 @@ package com.axersolutions.drbrains.myapplication;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
@@ -11,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -21,13 +24,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.axersolutions.drbrains.myapplication.SplashActivity.animal_list_one;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     List<AnimalsCamera> animal_list;
 
-
-
-
-
     //CODE FOR ANIMAL_VIEW_LIST_SEARCH
     // List view
     private ListView lv;
@@ -58,25 +63,27 @@ public class MainActivity extends AppCompatActivity {
     EditText inputSearch;
 
 
+
     // ArrayList for Listview
     ArrayList<HashMap<String, String>> productList;
 
+    private String animal_name,animal_location,camera_name,camera_location,current_status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
-
-
-
-
-        ArrayList<AnimalData> animalDataArrayList = SplashActivity.animalDataArrayList;
+        final ArrayList<AnimalData> animalDataArrayList = SplashActivity.animalDataArrayList;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe);
 
        // CardView cardView_animal_list = findViewById(R.id.card_view_animal_list);
+
+
+
+
 
         //Code for animal list search
 
@@ -135,9 +142,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
 //REST CODE
         final LinearLayout camera_view_container = findViewById(R.id.camera_view_container);
         final LinearLayout animal_view_container = findViewById(R.id.animal_view_container);
@@ -153,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         adapter = new AnimalAdapter(this, animalDataArrayList);
+
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -187,6 +192,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            recreate();
+
+        }
+    });
 
 
 
@@ -196,6 +208,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
 
+    public void refreshme(View view){
+        Toast.makeText(this, "refresh aayi", Toast.LENGTH_SHORT).show();
+        /*LinearLayout camera_view_container = findViewById(R.id.camera_view_container);
+        //camera_view_container.removeAllViews();
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        */
+        this.recreate();
+        RecyclerView camera_view_container = findViewById(R.id.recyclerView);
+        Toast.makeText(this, "there are "+camera_view_container.getChildCount()+"childeren", Toast.LENGTH_SHORT).show();
+
+        for(int index = 0; index<((ViewGroup)camera_view_container).getChildCount(); ++index) {
+            View nextChild = ((ViewGroup)camera_view_container).getChildAt(index);
+            if(index>2)
+                camera_view_container.removeView(nextChild);
+
+        }
     }
 }

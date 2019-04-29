@@ -49,7 +49,10 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
 
         AnimalData animalData = animalList.get(position);
         //adding values to the list item
-        imageView.setImageDrawable(context.getResources().getDrawable(animalData.getAnimal_image()));
+
+        Log.i("id inside", String.valueOf(animalData.getAnimal_image()));
+    //    imageView.setImageDrawable(context.getResources().getDrawable(animalData.getAnimal_image()));
+
         animal_name.setText(animalData.getAnimal_name());
         animal_status.setText(animalData.getCurrent_status());
 
