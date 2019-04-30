@@ -56,6 +56,11 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
         animal_name.setText(animalData.getAnimal_name());
         animal_status.setText(animalData.getCurrent_status());
 
+        String animalname;
+        animalname = animalData.getAnimal_name().toLowerCase();
+        final int resourceIdone = context.getResources().getIdentifier(animalname, "drawable", context.getPackageName());
+
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +69,7 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
 
 //                view.setAnimation(AnimationUtils.makeInAnimation(context,true));
                   tracking_intent.putExtra("pos",position);
+                  tracking_intent.putExtra("animal",resourceIdone);
                   context.startActivity(tracking_intent);
             }
         });

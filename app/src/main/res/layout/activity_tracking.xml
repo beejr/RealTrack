@@ -37,11 +37,6 @@
 
            </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
-      
         
         <LinearLayout
             android:layout_width="105dp"
@@ -51,10 +46,7 @@
             android:gravity="center">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
         <LinearLayout
             android:layout_width="105dp"
@@ -64,10 +56,6 @@
             android:gravity="center">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="105dp"
@@ -77,10 +65,7 @@
             android:gravity="center">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
 
 
@@ -89,10 +74,6 @@
     </LinearLayout>
  <!--First Row!-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black" />
 
      <!--Second Row!-->
     <LinearLayout
@@ -108,10 +89,7 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
         <LinearLayout
             android:layout_width="98dp"
@@ -121,10 +99,6 @@
         </LinearLayout>
 
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
 
         <LinearLayout
@@ -134,10 +108,6 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="98dp"
@@ -159,10 +129,7 @@
     </LinearLayout>
      <!--Second Row!-->
 
-     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black" />
+
 
    <!--  Third Row!-->
     <LinearLayout
@@ -178,10 +145,7 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
         <LinearLayout
             android:layout_width="98dp"
@@ -190,10 +154,6 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="98dp"
@@ -202,10 +162,7 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -222,10 +179,6 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -235,10 +188,7 @@
         </LinearLayout>
 
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
 
         <LinearLayout
@@ -248,10 +198,6 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -267,10 +213,7 @@
     </LinearLayout>
      <!--  Third Row!-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black" />
+
 
      <!--Forth Row!-->
          <LinearLayout
@@ -286,10 +229,6 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="98dp"
@@ -298,10 +237,6 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="98dp"
@@ -311,10 +246,6 @@
         </LinearLayout>
 
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
 
         <LinearLayout
@@ -326,10 +257,6 @@
     </LinearLayout>
      <!--Forth Row!-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black" />
 
      <!--Fifth Row!-->
     <LinearLayout
@@ -344,10 +271,6 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="105dp"
@@ -357,10 +280,7 @@
         </LinearLayout>
 
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
 
         <LinearLayout
@@ -370,10 +290,7 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:background="@android:color/black" />
+
 
         <LinearLayout
             android:layout_width="105dp"

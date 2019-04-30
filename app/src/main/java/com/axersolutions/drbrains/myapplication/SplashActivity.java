@@ -91,7 +91,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                animal_list = new ArrayList<>();
+               // animal_list = new ArrayList<>();
                 animal_list_one = new ArrayList<>();
                 //animal_list_two = new ArrayList<>();
 
@@ -137,7 +137,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                animal_list = new ArrayList<>();
+                //animal_list = new ArrayList<>();
                 animal_list_two = new ArrayList<>();
 /*
                 animal_list_one = new ArrayList<>();

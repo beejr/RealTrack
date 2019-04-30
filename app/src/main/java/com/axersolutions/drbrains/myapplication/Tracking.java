@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
+
 public class Tracking extends AppCompatActivity {
 
     int x;
@@ -25,6 +27,8 @@ public class Tracking extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myroot = database.getReference();
 
+    List<AnimalData> animalDataList = SplashActivity.animal_list_one;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,18 @@ public class Tracking extends AppCompatActivity {
 
         Intent trackingintent = getIntent();
         final int animal_position = trackingintent.getIntExtra("pos",0);
+        final int animal_tracks = trackingintent.getIntExtra("name",0);
+
+        final AnimalData animalData = animalDataList.get(animal_position);
+
+        Log.i("track", String.valueOf(animal_tracks));
+
+
+
+
+
+
+
 //        Log.i("pos",Integer.toString(animal_position));
 
         SharedPreferences prefs = getSharedPreferences("realtrack", MODE_PRIVATE);
@@ -126,13 +142,23 @@ public class Tracking extends AppCompatActivity {
                     animal_tracking.setVisibility(View.VISIBLE);
                     Log.d("Invinsibe","VISIBLE x");
 
-                    if(y == 0){linearLayout00.setBackgroundResource(R.drawable.paw);}
+                    if(y == 0){
+                            linearLayout00.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                        //linearLayout00.setBackgroundResource(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                        //linearLayout00.setBackgroundResource(R.drawable.paw);
+
+                    }
                     else if(y == 1){
 
                         Log.d("Invinsibe","VISIBLE y");
-                        linearLayout01.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 2){linearLayout02.setBackgroundResource(R.drawable.paw);}
-                    else if(y ==3){linearLayout03.setBackgroundResource(R.drawable.paw);}
+                        linearLayout01.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                      }
+                    else if(y == 2){
+                        linearLayout02.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                       }
+                    else if(y ==3){
+                        linearLayout03.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                        }
 
                 }
                 else if(x == 1)
@@ -141,43 +167,51 @@ public class Tracking extends AppCompatActivity {
                     Log.d("Invinsibe 1","VISIBLE y");
 
                     animal_tracking.setVisibility(View.VISIBLE);
-                    if(y == 0){linearLayout10.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 1){linearLayout11.setBackgroundResource(R.drawable.paw);}
+                    if(y == 0){
+                        linearLayout10.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                       }
+                    else if(y == 1){
+                        linearLayout11.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                        }
                     else if(y == 2){
                         Log.d("Invinsibe 2","VISIBLE y");
-
-                        linearLayout12.setBackgroundResource(R.drawable.paw);}
-                    else if(y ==3){linearLayout13.setBackgroundResource(R.drawable.paw);}
+                        linearLayout12.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                       }
+                    else if(y ==3){
+                        linearLayout13.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                       }
 
                 }
                 else if(x == 2)
                 {
 
                     animal_tracking.setVisibility(View.VISIBLE);
-                    if(y == 0){linearLayout20.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 1){linearLayout21.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 2){linearLayout22.setBackgroundResource(R.drawable.paw);}
-                    else if(y ==3){linearLayout23.setBackgroundResource(R.drawable.paw);}
+                    if(y == 0){
+                        linearLayout20.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));
+                        ;}
+                    else if(y == 1){linearLayout21.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y == 2){linearLayout22.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y ==3){linearLayout23.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
 
                 }
                 else if(x == 3)
                 {
 
                     animal_tracking.setVisibility(View.VISIBLE);
-                    if(y == 0){linearLayout30.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 1){linearLayout31.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 2){linearLayout32.setBackgroundResource(R.drawable.paw);}
-                    else if(y ==3){linearLayout33.setBackgroundResource(R.drawable.paw);}
+                    if(y == 0){linearLayout30.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y == 1){linearLayout31.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y == 2){linearLayout32.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y ==3){linearLayout33.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
 
                 }
                 else if(x == 4)
                 {
 
                     animal_tracking.setVisibility(View.VISIBLE);
-                    if(y == 0){linearLayout40.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 1){linearLayout41.setBackgroundResource(R.drawable.paw);}
-                    else if(y == 2){linearLayout42.setBackgroundResource(R.drawable.paw);}
-                    else if(y ==3){linearLayout43.setBackgroundResource(R.drawable.paw);}
+                    if(y == 0){linearLayout40.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y == 1){linearLayout41.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y == 2){linearLayout42.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
+                    else if(y ==3){linearLayout43.setBackground(getApplicationContext().getResources().getDrawable(animalData.getAnimal_image()));}
 
                 }
 
