@@ -18,7 +18,9 @@
      android:layout_marginTop="30dp"
      android:id="@+id/animal_tracks"
      android:background="@drawable/layout_curved_bg">
-<!-- First Row!-->
+
+
+ <!--First Row!-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -35,11 +37,12 @@
 
            </LinearLayout>
 
-     <!--   <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+      
+        
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -48,11 +51,11 @@
             android:gravity="center">
         </LinearLayout>
 
-     <!--   <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -61,11 +64,11 @@
             android:gravity="center">
         </LinearLayout>
 
-     <!--   <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
@@ -74,16 +77,24 @@
             android:gravity="center">
         </LinearLayout>
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:background="@android:color/black" />
+
+
+
+
 
     </LinearLayout>
+ <!--First Row!-->
 
-<!-- Second Row!-->
-
-   <!-- <View
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
--->
+
+     <!--Second Row!-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -97,53 +108,63 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-  <!--      <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
-            android:layout_width="105dp"
+            android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action11"
             android:orientation="horizontal">
         </LinearLayout>
-<!--
+
 
         <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
 
         <LinearLayout
-            android:layout_width="105dp"
+            android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action12"
             android:orientation="horizontal">
         </LinearLayout>
 
-     <!--   <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
-            android:layout_width="100dp"
+            android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action13"
             android:orientation="horizontal">
         </LinearLayout>
 
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/action14"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+
     </LinearLayout>
+     <!--Second Row!-->
 
-<!-- Third Row!-->
-
-    <!--<View
+     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
--->
+
+   <!--  Third Row!-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -157,53 +178,102 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-     <!--   <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
-            android:layout_width="105dp"
+            android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action21"
             android:orientation="horizontal">
         </LinearLayout>
 
-    <!--    <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
-            android:layout_width="105dp"
+            android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action22"
             android:orientation="horizontal">
         </LinearLayout>
 
-      <!--  <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:id="@+id/action23"
             android:orientation="horizontal">
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/action24"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/action25"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:background="@android:color/black" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/action26"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/action27"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+
+
+
+
     </LinearLayout>
+     <!--  Third Row!-->
 
-<!-- Forth Row!-->
-
-   <!-- <View
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
--->
-    <LinearLayout
+
+     <!--Forth Row!-->
+         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/action3"
@@ -216,82 +286,82 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-     <!--   <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
-            android:layout_width="105dp"
+            android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action31"
             android:orientation="horizontal">
         </LinearLayout>
 
-      <!--  <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
-            android:layout_width="105dp"
+            android:layout_width="98dp"
             android:layout_height="100dp"
             android:id="@+id/action32"
             android:orientation="horizontal">
         </LinearLayout>
-<!--
+
 
         <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
 
         <LinearLayout
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:id="@+id/action33"
             android:orientation="horizontal">
         </LinearLayout>
     </LinearLayout>
+     <!--Forth Row!-->
 
-<!-- Fifth Row!-->
-<!--
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
 
-  -->  <LinearLayout
+     <!--Fifth Row!-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/action4"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="98dp"
+            android:layout_width="90dp"
             android:layout_height="100dp"
             android:id="@+id/action40"
             android:orientation="horizontal">
         </LinearLayout>
 
-    <!--    <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
             android:id="@+id/action41"
             android:orientation="horizontal">
         </LinearLayout>
-<!--
+
 
         <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
 
         <LinearLayout
             android:layout_width="105dp"
@@ -300,20 +370,34 @@
             android:orientation="horizontal">
         </LinearLayout>
 
-     <!--   <View
+        <View
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:background="@android:color/black" />
--->
+
         <LinearLayout
             android:layout_width="105dp"
             android:layout_height="100dp"
             android:id="@+id/action43"
             android:orientation="horizontal">
         </LinearLayout>
+
+
+
+
+
     </LinearLayout>
+     <!--Fifth Row!-->
+
+
+
+
+
  </LinearLayout>
 
+
+
+    <!--TEXT DATA-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -400,4 +484,9 @@
 
 
     </LinearLayout>
+    <!--TEXT DATA-->
+
+
+
+
 </LinearLayout>

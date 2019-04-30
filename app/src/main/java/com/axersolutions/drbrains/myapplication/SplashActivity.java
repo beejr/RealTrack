@@ -93,9 +93,8 @@ public class SplashActivity extends AppCompatActivity {
 
                 animal_list = new ArrayList<>();
                 animal_list_one = new ArrayList<>();
-        /*        animal_list_two = new ArrayList<>();
+                //animal_list_two = new ArrayList<>();
 
-*/
                 for(DataSnapshot data : dataSnapshot.getChildren()){
                     animal_name = String.valueOf(data.child("name").getValue());
                     animal_location = String.valueOf(data.child("animal_location").getValue());
@@ -103,15 +102,26 @@ public class SplashActivity extends AppCompatActivity {
                     camera_location = String.valueOf(data.child("cam_location").getValue());
                     current_status = String.valueOf(data.child("status").getValue());
 
-                   /* int resourceIdone = getResources().
-                            getIdentifier(animal_name, "drawable", getPackageName());
+                    animal_name = animal_name.toLowerCase();
 
-                    animal_name.toLowerCase();*/
-                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.pawprint);
-                    animal_list_one.add(animalData);
-                  //  AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
-                    //animal_list.add(animalsCamera);
+                    int resourceIdone = getResources().getIdentifier(animal_name, "drawable", getPackageName());
+                    Log.i("splashLogID", String.valueOf(resourceIdone));
+
+
+                   // Log.i("splashLogNAME",animal_name);
+
+
+                    //Log.i("splashLogNAME",animal_name);
                     animal_list.add(animal_name);
+
+                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,resourceIdone);
+                    animal_list_one.add(animalData);
+
+
+                    /*AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
+                    animal_list.add(animalsCamera);
+                    */
+
                     Log.i("Camera ONE",animal_name+" "+animal_location+" "+camera_name+" "+camera_location+" "+current_status);
 
 

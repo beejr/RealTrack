@@ -23,7 +23,6 @@
         android:id="@+id/custom_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/pawprint"
         android:foregroundGravity="center"/>
 
     <TextView
