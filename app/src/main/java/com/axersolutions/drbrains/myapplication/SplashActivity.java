@@ -87,7 +87,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-        myroof.child("1").addValueEventListener(new ValueEventListener() {
+        myroof.child("0").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -133,7 +133,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-        myroof.child("2").addValueEventListener(new ValueEventListener() {
+        myroof.child("1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -157,8 +157,13 @@ public class SplashActivity extends AppCompatActivity {
                     int resourceIdtwo = getResources().
                             getIdentifier(animal_name, "drawable", getPackageName());
 */
+                    animal_name=animal_name.toLowerCase();
+                    Log.i("name",animal_name);
+                    int resourceIdtwo = getResources().getIdentifier(animal_name, "drawable", getPackageName());
+                    Log.i("splashLogIDtwo", String.valueOf(resourceIdtwo));
 
-                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,R.drawable.pawprint);
+
+                    AnimalData animalData = new AnimalData(animal_name,animal_location,camera_name,camera_location,current_status,resourceIdtwo);
                     animal_list_two.add(animalData);
                     //AnimalsCamera animalsCamera = new AnimalsCamera(animal_name,camera_name);
                     //animal_list.add(animalsCamera);

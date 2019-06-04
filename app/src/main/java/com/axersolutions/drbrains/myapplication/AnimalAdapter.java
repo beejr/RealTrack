@@ -96,7 +96,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
                         testlistview.setVisibility(View.GONE);
 
                         SharedPreferences.Editor editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
-                        editor.putInt("list_id", 1);
+                        editor.putInt("list_id", i);
                         editor.commit();
 
 
@@ -106,7 +106,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
                         testlistview.setVisibility(View.VISIBLE);
 
                          editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
-                        editor.putInt("list_id", 2);
+                        editor.putInt("list_id", i);
                         editor.commit();
 
 

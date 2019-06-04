@@ -69,9 +69,9 @@ public class AnimalHolder extends RecyclerView.ViewHolder {
                     final ImageView imageView = new ImageView(itemView.getContext());
                     imageView.setLayoutParams(new LinearLayout.LayoutParams(160, 160)); // value is in pixels
 
-                    //imageView.setImageDrawable(itemView.getResources().getDrawable(animal_list_two.get(i).getAnimal_image()));
+                    imageView.setImageDrawable(itemView.getResources().getDrawable(animal_list_two.get(i).getAnimal_image()));
 
-                     imageView.setImageResource(R.drawable.pawprint);
+                    // imageView.setImageResource(R.drawable.pawprint);
                     image_layout.addView(imageView);
                 }
             }

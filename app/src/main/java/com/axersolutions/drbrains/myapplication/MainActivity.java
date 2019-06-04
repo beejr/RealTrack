@@ -1,5 +1,6 @@
 package com.axersolutions.drbrains.myapplication;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -89,11 +91,17 @@ public class MainActivity extends AppCompatActivity {
   //      Log.i("t", String.valueOf(animal_list.isEmpty()));
 
         lv = (ListView) findViewById(R.id.list_view);
+
+
+
+
         inputSearch = (EditText) findViewById(R.id.inputSearch);
 
         // Adding items to listview
         list_adapter_animal = new ArrayAdapter<String>(this, R.layout.list_item, R.id.animal_name, animals);
         lv.setAdapter(list_adapter_animal);
+
+
 
 
 //        list_adapter_animal = new TestAdapter(this,R.layout.list_item,animal_list);

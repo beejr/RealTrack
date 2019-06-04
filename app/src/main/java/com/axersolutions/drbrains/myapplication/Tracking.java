@@ -27,18 +27,31 @@ public class Tracking extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myroot = database.getReference();
 
-    List<AnimalData> animalDataList = SplashActivity.animal_list_one;
+    //List<AnimalData> animalDataList = SplashActivity.animal_list_one;
+    List<AnimalData> animalDataListselected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracking);
 
+        SharedPreferences testprefs = getSharedPreferences("realtrack", MODE_PRIVATE);
+        int list_id = testprefs.getInt("list_id", 1);
+
+        if(list_id==0){
+            animalDataListselected = SplashActivity.animal_list_one;
+        }else if (list_id==1)
+        {
+            animalDataListselected = SplashActivity.animal_list_two;
+
+        }
+
+
         Intent trackingintent = getIntent();
         final int animal_position = trackingintent.getIntExtra("pos",0);
         final int animal_tracks = trackingintent.getIntExtra("name",0);
 
-        final AnimalData animalData = animalDataList.get(animal_position);
+        final AnimalData animalData = animalDataListselected.get(animal_position);
 
         Log.i("track", String.valueOf(animal_tracks));
 
