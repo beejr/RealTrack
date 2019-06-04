@@ -37,16 +37,9 @@ public class Tracking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracking);
 
-        SharedPreferences testprefs = getSharedPreferences("realtrack", MODE_PRIVATE);
-        int camera_id = testprefs.getInt("list_id", 1);
+//        SharedPreferences testprefs = getSharedPreferences("realtrack", MODE_PRIVATE);
+//        int camera_id = testprefs.getInt("list_id", 1);
 
-        if(camera_id==0){
-            animalDataListselected = SplashActivity.animal_list_one;
-        }else if (camera_id==1)
-        {
-            animalDataListselected = SplashActivity.animal_list_two;
-
-        }
 
 
         Intent trackingintent = getIntent();
@@ -57,13 +50,23 @@ public class Tracking extends AppCompatActivity {
         final int you_are_from = trackingintent.getIntExtra("i_am_from",1);
 
 
-        final AnimalData animalData = animalDataListselected.get(animal_position);
 
         Log.i("track", String.valueOf(animal_tracks));
 
-        String animalname;
-        animalname = animalData.getAnimal_name().toLowerCase();
-        final int resourceIdone = getApplicationContext().getResources().getIdentifier(animalname, "drawable", getPackageName());
+        if(cam_number==0){
+            animalDataListselected = SplashActivity.animal_list_one;
+        }else if (cam_number==1)
+        {
+            animalDataListselected = SplashActivity.animal_list_two;
+
+        }
+
+
+
+//        String animalname;
+//        animalname = animalData.getAnimal_name().toLowerCase();
+//        final int resourceIdone = getApplicationContext().getResources().getIdentifier(animalname, "drawable", getPackageName());
+
 
 
 
@@ -76,11 +79,12 @@ public class Tracking extends AppCompatActivity {
         }
         else if(you_are_from==2){
             //implies you are from search camera list page
-            camera=camera_id;
+            camera=cam_number;
             anim = animal_position;
 
         }
 
+        final AnimalData animalData = animalDataListselected.get(animal_position);
 
 
 
@@ -174,7 +178,6 @@ public class Tracking extends AppCompatActivity {
 
                 if(x == 0)
                 {
-
                     animal_tracking.setVisibility(View.VISIBLE);
                     Log.d("Invinsibe","VISIBLE x");
 

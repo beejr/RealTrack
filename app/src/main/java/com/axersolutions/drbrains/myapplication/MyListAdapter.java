@@ -2,6 +2,7 @@ package com.axersolutions.drbrains.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class MyListAdapter extends ArrayAdapter<AnimalData> {
 
@@ -60,6 +63,8 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
         animalname = animalData.getAnimal_name().toLowerCase();
         final int resourceIdone = context.getResources().getIdentifier(animalname, "drawable", context.getPackageName());
 
+        SharedPreferences testprefs = context.getSharedPreferences("realtrack", MODE_PRIVATE);
+        final int camera_id = testprefs.getInt("list_id", 1);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +72,18 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
                 Toast.makeText(context,String.valueOf(position),Toast.LENGTH_SHORT).show();
                 Intent tracking_intent = new Intent(context, Tracking.class);
 
-//                view.setAnimation(AnimationUtils.makeInAnimation(context,true));
-                  tracking_intent.putExtra("pos",position);
+//              view.setAnimation(AnimationUtils.makeInAnimation(context,true));
+                tracking_intent.putExtra("pos",position);
                 tracking_intent.putExtra("i_am_from",2);
+
+
+
+                tracking_intent.putExtra("cam_num",camera_id);
+
 
                 tracking_intent.putExtra("animal",resourceIdone);
                   context.startActivity(tracking_intent);
+
             }
         });
 

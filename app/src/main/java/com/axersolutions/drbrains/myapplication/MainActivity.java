@@ -157,12 +157,15 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("cam number",cam_number+"");
                     Log.i("pos in list",pos_in_list+"");
 
+                    String animalname;
+                    animalname = animals.get(index);
+                    int resourceIdone = getResources().getIdentifier(animalname, "drawable", getPackageName());
 
                     Intent tracking_intent = new Intent(getApplicationContext(), Tracking.class);
 
                     tracking_intent.putExtra("cam_num",cam_number);
                     tracking_intent.putExtra("pos",pos_in_list);
-                    tracking_intent.putExtra("name",animals.get(index));
+                    tracking_intent.putExtra("name",animalname);
 
                     tracking_intent.putExtra("i_am_from",1);
 
