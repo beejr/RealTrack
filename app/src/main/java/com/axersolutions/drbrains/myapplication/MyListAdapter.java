@@ -69,7 +69,9 @@ public class MyListAdapter extends ArrayAdapter<AnimalData> {
 
 //                view.setAnimation(AnimationUtils.makeInAnimation(context,true));
                   tracking_intent.putExtra("pos",position);
-                  tracking_intent.putExtra("animal",resourceIdone);
+                tracking_intent.putExtra("i_am_from",2);
+
+                tracking_intent.putExtra("animal",resourceIdone);
                   context.startActivity(tracking_intent);
             }
         });

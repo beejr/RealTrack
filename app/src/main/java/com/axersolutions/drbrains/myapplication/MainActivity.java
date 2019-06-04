@@ -1,5 +1,7 @@
 package com.axersolutions.drbrains.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -83,23 +86,142 @@ public class MainActivity extends AppCompatActivity {
 
         //Code for animal list search
 
-        String animals[] = SplashActivity.animal_list.toArray(new String[SplashActivity.animal_list.size()]);
+        final List<String> animals =SplashActivity.animal_list;
+
+        final List<AnimalData> animalsdata_cam1 =SplashActivity.animal_list_one;
+        final List<String> animals_cam1 = new ArrayList<>();
+        for(int i=0;i<animalsdata_cam1.size();i++)
+            animals_cam1.add(animalsdata_cam1.get(i).getAnimal_name());
+
+        final List<AnimalData> animalsdata_cam2 =SplashActivity.animal_list_two;
+        final List<String> animals_cam2 = new ArrayList<>();
+        for(int i=0;i<animalsdata_cam2.size();i++)
+            animals_cam2.add(animalsdata_cam2.get(i).getAnimal_name());
+
+
 //        fruitList.toArray(new String[fruitList.size()]);
 
        //animal_list = SplashActivity.animal_list;
 //       Log.i("t", String.valueOf(animal_list.size()));
   //      Log.i("t", String.valueOf(animal_list.isEmpty()));
 
-        lv = (ListView) findViewById(R.id.list_view);
 
 
 
+        EditText st = findViewById(R.id.search_box);
+        final LinearLayout animals_list_ll = findViewById(R.id.animal_list_ll);
 
-        inputSearch = (EditText) findViewById(R.id.inputSearch);
+        //populate animals_list_ll with "cards" of animal names
 
-        // Adding items to listview
-        list_adapter_animal = new ArrayAdapter<String>(this, R.layout.list_item, R.id.animal_name, animals);
-        lv.setAdapter(list_adapter_animal);
+        for(int i=0; i<animals.size(); i++){
+            final int index = i;
+            //create a linear layout to hold a text view
+            //this textview will hold the animal name, i
+
+            LinearLayout parent = new LinearLayout(getApplicationContext());
+            parent.setOrientation(LinearLayout.VERTICAL);
+
+            animals_list_ll.addView(parent);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(30, 20, 30, 20);
+            parent.setPadding(15,20,15,20);
+
+            parent.setLayoutParams(layoutParams);
+
+            TextView tv = new TextView(getApplicationContext());
+            tv.setText(animals.get(i));
+            tv.setTextSize(25);
+
+            parent.setBackgroundColor(Color.parseColor("#FFDFDFDF"));
+            parent.setTag(animals.get(i).toLowerCase());
+
+            parent.addView(tv);
+            parent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getApplicationContext(), "clicked "+animals.get(index), Toast.LENGTH_SHORT).show();
+
+                    int cam_number;
+                    int pos_in_list;
+                    if(animals_cam1.contains(animals.get(index))) {
+                        cam_number = 0;
+                        pos_in_list=animals_cam1.indexOf(animals.get(index));
+                    }
+                    else {
+                        cam_number = 1;
+                        pos_in_list=animals_cam2.indexOf(animals.get(index));
+                    }
+                    Log.i("cam number",cam_number+"");
+                    Log.i("pos in list",pos_in_list+"");
+
+
+                    Intent tracking_intent = new Intent(getApplicationContext(), Tracking.class);
+
+                    tracking_intent.putExtra("cam_num",cam_number);
+                    tracking_intent.putExtra("pos",pos_in_list);
+                    tracking_intent.putExtra("name",animals.get(index));
+
+                    tracking_intent.putExtra("i_am_from",1);
+
+                    getApplicationContext().startActivity(tracking_intent);
+
+                }
+            });
+        }
+
+        //Implement dynamic search
+        st.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //Toast.makeText(getApplicationContext(), "text changed!", Toast.LENGTH_SHORT).show();
+                //change s to lowercase
+                String se = s.toString().toLowerCase();
+                //get relevant results from animals into search_results
+                List<String> search_results =new ArrayList<>();
+
+                search_results.clear();
+                for(int i=0;i<animals.size();i++){
+                    if(animals.get(i).contains(se)) {
+                        Log.i(animals.get(i)+" contains",se);
+                        search_results.add(animals.get(i));
+                    }
+                }
+
+                if(se.equals("")) {
+                    search_results.clear();
+                    for (int i = 0 ;i<animals.size();i++)
+                        search_results.add(animals.get(i));
+                }
+
+                //Log search_results elements
+                Log.i("Search results","---"+search_results.size()+"---");
+                for (int i = 0 ;i<search_results.size();i++)
+                    Log.i("-->",search_results.get(i));
+
+
+                //repopulate animal_list_ll with relevant results
+                final int childCount = animals_list_ll.getChildCount();
+                for (int i = 0; i < childCount; i++) {
+                    View v = animals_list_ll.getChildAt(i);
+                    if(!search_results.contains(v.getTag().toString()))
+                        v.setVisibility(View.GONE);
+                    else
+                        v.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
 
 
 
@@ -121,27 +243,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
-        inputSearch.addTextChangedListener(new TextWatcher() {
 
-            @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
-                MainActivity.this.list_adapter_animal.getFilter().filter(cs);
-
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                          int arg3) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
 
 
 //REST CODE

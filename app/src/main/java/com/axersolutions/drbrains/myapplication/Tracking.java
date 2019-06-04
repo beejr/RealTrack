@@ -22,6 +22,8 @@ public class Tracking extends AppCompatActivity {
 
     int x;
     int y;
+    int camera; //camera id requested to firebase dataase
+    int anim;
     String animal_name,time,animal_location1;
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -36,11 +38,11 @@ public class Tracking extends AppCompatActivity {
         setContentView(R.layout.activity_tracking);
 
         SharedPreferences testprefs = getSharedPreferences("realtrack", MODE_PRIVATE);
-        int list_id = testprefs.getInt("list_id", 1);
+        int camera_id = testprefs.getInt("list_id", 1);
 
-        if(list_id==0){
+        if(camera_id==0){
             animalDataListselected = SplashActivity.animal_list_one;
-        }else if (list_id==1)
+        }else if (camera_id==1)
         {
             animalDataListselected = SplashActivity.animal_list_two;
 
@@ -48,33 +50,54 @@ public class Tracking extends AppCompatActivity {
 
 
         Intent trackingintent = getIntent();
+
+        final int cam_number = trackingintent.getIntExtra("cam_num",0);
         final int animal_position = trackingintent.getIntExtra("pos",0);
         final int animal_tracks = trackingintent.getIntExtra("name",0);
+        final int you_are_from = trackingintent.getIntExtra("i_am_from",1);
+
 
         final AnimalData animalData = animalDataListselected.get(animal_position);
 
         Log.i("track", String.valueOf(animal_tracks));
 
+        String animalname;
+        animalname = animalData.getAnimal_name().toLowerCase();
+        final int resourceIdone = getApplicationContext().getResources().getIdentifier(animalname, "drawable", getPackageName());
 
 
+
+        if(you_are_from==1){
+            //implies you are from search suggestions page
+            camera=cam_number;
+            anim = animal_position;
+
+
+        }
+        else if(you_are_from==2){
+            //implies you are from search camera list page
+            camera=camera_id;
+            anim = animal_position;
+
+        }
 
 
 
 
 //        Log.i("pos",Integer.toString(animal_position));
-
+/*
         SharedPreferences prefs = getSharedPreferences("realtrack", MODE_PRIVATE);
-        int position = prefs.getInt("list_id", 1);
+        int position = prefs.getInt("list_id", 1);*/
 
 
-        myroot.child(Integer.toString(position)).addValueEventListener(new ValueEventListener() {
+        myroot.child(Integer.toString(camera)).child(Integer.toString(anim)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    x = Integer.parseInt(String.valueOf(dataSnapshot.child(Integer.toString(animal_position)).child("x").getValue()));
-                    y = Integer.parseInt(String.valueOf(dataSnapshot.child(Integer.toString(animal_position)).child("y").getValue()));
-                    animal_name = String.valueOf(dataSnapshot.child(Integer.toString(animal_position)).child("name").getValue());
-                    time =  String.valueOf(dataSnapshot.child(Integer.toString(animal_position)).child("time").getValue());
-                    animal_location1 = String.valueOf(dataSnapshot.child(Integer.toString(animal_position)).child("animal_location").getValue());
+                    x = Integer.parseInt(String.valueOf(dataSnapshot.child("x").getValue()));
+                    y = Integer.parseInt(String.valueOf(dataSnapshot.child("y").getValue()));
+                    animal_name = String.valueOf(dataSnapshot.child("name").getValue());
+                    time =  String.valueOf(dataSnapshot.child("time").getValue());
+                    animal_location1 = String.valueOf(dataSnapshot.child("animal_location").getValue());
 
                 Log.d("Invinsibe x",String.valueOf(x));
                     Log.d("Invinsibe y",String.valueOf(y));

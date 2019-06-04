@@ -75,20 +75,22 @@
         android:visibility="gone"
         android:id="@+id/animal_view_container">
 
-        <!-- Editext for Search -->
         <EditText
-            android:id="@+id/inputSearch"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search products.."
-            android:inputType="textVisiblePassword" />
+            android:layout_margin="5dp"
+            android:maxLines="1"
+            android:id="@+id/search_box"
+            android:hint="Enter search term"/>
 
-        <!-- List View -->
-        <ListView
-            android:id="@+id/list_view"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:layout_margin="5dp"
+            android:id="@+id/animal_list_ll"
+            android:orientation="vertical">
+
+        </LinearLayout>
 
     </LinearLayout>
 
