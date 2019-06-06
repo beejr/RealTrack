@@ -24,7 +24,7 @@ public class Tracking extends AppCompatActivity {
     int y;
     int camera; //camera id requested to firebase dataase
     int anim;
-    String animal_name,time,animal_location1;
+    String animal_name,time,animal_location1,camera_name;
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myroot = database.getReference();
@@ -103,6 +103,10 @@ public class Tracking extends AppCompatActivity {
                     time =  String.valueOf(dataSnapshot.child("time").getValue());
                     animal_location1 = String.valueOf(dataSnapshot.child("animal_location").getValue());
 
+
+                    camera_name = String.valueOf(camera+1);
+
+
                 Log.d("Invinsibe x",String.valueOf(x));
                     Log.d("Invinsibe y",String.valueOf(y));
 
@@ -133,19 +137,32 @@ public class Tracking extends AppCompatActivity {
                 LinearLayout linearLayout42 = (LinearLayout)findViewById(R.id.action42);
                 LinearLayout linearLayout43 = (LinearLayout)findViewById(R.id.action43);
 
+
+
                 TextView status_res = (TextView)findViewById(R.id.status_res);
                 TextView time_res = (TextView)findViewById(R.id.time_res);
-                TextView animal_location = (TextView)findViewById(R.id.animal_location);
+                TextView camera_res = (TextView)findViewById(R.id.camera_res);
                 TextView animal_location_res = (TextView)findViewById(R.id.animal_location_res);
+
+                if(x == -1 || y == -1){
+                    camera_res.setText("Unknown");
+
+                }else{
+                    camera_res.setAllCaps(true);
+                    camera_res.setText(camera_name);
+
+                }
 
 
                 status_res.setAllCaps(true);
                 status_res.setText(animal_name);
+
+
                 time_res.setText(time);
 
                 animal_location_res.setAllCaps(true);
                 animal_location_res.setText(animal_location1);
-                time_res.setText(time);
+
 
 
                 linearLayout00.setBackgroundResource(0);

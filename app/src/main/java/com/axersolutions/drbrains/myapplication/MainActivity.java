@@ -99,12 +99,6 @@ public class MainActivity extends AppCompatActivity {
             animals_cam2.add(animalsdata_cam2.get(i).getAnimal_name());
 
 
-//        fruitList.toArray(new String[fruitList.size()]);
-
-       //animal_list = SplashActivity.animal_list;
-//       Log.i("t", String.valueOf(animal_list.size()));
-  //      Log.i("t", String.valueOf(animal_list.isEmpty()));
-
 
 
 
@@ -126,16 +120,19 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                                                         LinearLayout.LayoutParams.MATCH_PARENT,
                                                         LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(30, 20, 30, 20);
+            layoutParams.setMargins(30, 30, 30, 20);
             parent.setPadding(15,20,15,20);
 
             parent.setLayoutParams(layoutParams);
 
             TextView tv = new TextView(getApplicationContext());
-            tv.setText(animals.get(i));
-            tv.setTextSize(25);
+            tv.setText(animals.get(i).toUpperCase());
+            tv.setTextSize(20);
+            tv.setPadding(20,20,20,20);
+            tv.setTextColor(Color.parseColor("#1A237E"));
+//          parent.setBackgroundColor(Color.parseColor("#FFDFDFDF"));
 
-            parent.setBackgroundColor(Color.parseColor("#FFDFDFDF"));
+            parent.setBackgroundResource(R.drawable.curved_search_bg);
             parent.setTag(animals.get(i).toLowerCase());
 
             parent.addView(tv);

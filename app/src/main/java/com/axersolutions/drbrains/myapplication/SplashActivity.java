@@ -1,11 +1,15 @@
 package com.axersolutions.drbrains.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,18 +47,34 @@ public class SplashActivity extends AppCompatActivity {
 
         animalDataArrayList=new ArrayList<>();
 
-        //Insert data from Firebase to the Card
+        //Check Internet Connectivity
+        boolean connected =false;
+        boolean flag = true;
+        ConnectivityManager conmgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = conmgr.getActiveNetworkInfo();
+        connected = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+
+        if (connected == false) {
+            Toast.makeText(getApplicationContext(), "No Internet Connectivity", Toast.LENGTH_LONG).show();
+        }   //Insert data from Firebase to the Card
+
+
+
         createcard();
 
-        final int SPLASH_DISPLAY_LENGTH = 3000; //splash screen will be shown for 5 seconds
+        final int SPLASH_DISPLAY_LENGTH = 2000; //splash screen will be shown for 5 seconds
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                mainIntent.putExtra("check",0);
                 startActivity(mainIntent);
                 finish();
             }
         },SPLASH_DISPLAY_LENGTH);
+
+
+
 
     }
 

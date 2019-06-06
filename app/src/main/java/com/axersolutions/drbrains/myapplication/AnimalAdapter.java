@@ -36,7 +36,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
     ListView listView,testlistview;
 
-    TextView nofofanimals,noofanimals_result;
+    TextView title,nofofanimals,noofanimals_result;
 
     TextView camera,name;
     LinearLayout linearLayout ;
@@ -74,6 +74,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
         listView=(ListView)popupView.findViewById(R.id.list);
         testlistview=(ListView)popupView.findViewById(R.id.list1);
 
+        title = (TextView)popupView.findViewById(R.id.title);
         nofofanimals = (TextView)popupView.findViewById(R.id.noofanimals);
         noofanimals_result = (TextView)popupView.findViewById(R.id.noofanimals_result);
 
@@ -84,7 +85,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
         testlistview.setVisibility(View.GONE);
 
 
-
+        title.setText("Camera One");
         noofanimals_result.setText(String.valueOf(animal_list_one.size()));
         animalHolder.itemView.setOnClickListener(new View.OnClickListener()
         {
@@ -101,6 +102,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
 
                      if (i == 1){
+                        title.setText("Camera Two");
                         noofanimals_result.setText(String.valueOf(animal_list_two.size()));
                         listView.setVisibility(View.GONE);
                         testlistview.setVisibility(View.VISIBLE);

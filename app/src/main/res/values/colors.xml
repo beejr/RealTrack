@@ -6,7 +6,11 @@
     <color name="colorTransparent">#00000000</color>
     <color name="indigo">#1A237E</color>
     <color name="white">#FFFFFF</color>
-    <color name="grey">#90C9F5</color>
+    <color name="blue">#90C9F5</color>
     <color name="red">#EB064F</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="cream">#f2f5df</color>
+    <color name="bluish">#2196F3</color>
 
+    <color name="green">#63c900</color>
 </resources>

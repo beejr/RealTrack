@@ -17,6 +17,8 @@
      android:layout_marginStart="10dp"
      android:layout_marginTop="30dp"
      android:id="@+id/animal_tracks"
+     android:paddingLeft="17dp"
+     android:paddingRight="17dp"
      android:background="@drawable/layout_curved_bg">
 
 
@@ -320,7 +322,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -394,6 +396,34 @@
                 android:id="@+id/animal_location_res"
                 android:fontFamily="sans-serif-thin"
                 android:textSize="30sp"
+                android:textColor="#63c900"
+                android:hint="No result to display"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/camera"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:fontFamily="serif-monospace"
+                android:text="Camera:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/camera_res"
+                android:fontFamily="sans-serif-thin"
+                android:textSize="30sp"
+                android:textStyle="bold"
                 android:textColor="#63c900"
                 android:hint="No result to display"/>
 
