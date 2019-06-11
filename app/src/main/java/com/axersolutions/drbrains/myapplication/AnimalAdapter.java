@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -87,45 +88,55 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalHolder> {
 
         title.setText("Camera One");
         noofanimals_result.setText(String.valueOf(animal_list_one.size()));
-        animalHolder.itemView.setOnClickListener(new View.OnClickListener()
-        {
-          @Override
-              public void onClick(View view) {
-                    int i = animalHolder.getAdapterPosition();
+        animalHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int i = animalHolder.getAdapterPosition();
 
-                        Log.e("p","ivide ethi");
-                        testlistview.setVisibility(View.GONE);
-
-                        SharedPreferences.Editor editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
-                        editor.putInt("list_id", i);
-                        editor.commit();
+                if (i != 0 || i != 1 || animal_list_one.size()==0 || animal_list_two.size()==0) {
+                    i = i + 1;
+                    Toast.makeText(view.getContext(), "NO animals present in Camera " + i, Toast.LENGTH_LONG).show();
+                }
+                else {
 
 
-                     if (i == 1){
+                    Log.e("p", "ivide ethi");
+                    testlistview.setVisibility(View.GONE);
+
+                    SharedPreferences.Editor editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
+                    editor.putInt("list_id", i);
+                    editor.commit();
+
+
+                    if (i == 1)
+                    {
                         title.setText("Camera Two");
                         noofanimals_result.setText(String.valueOf(animal_list_two.size()));
                         listView.setVisibility(View.GONE);
                         testlistview.setVisibility(View.VISIBLE);
 
-                         editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
+                        editor = context.getSharedPreferences("realtrack", MODE_PRIVATE).edit();
                         editor.putInt("list_id", i);
                         editor.commit();
 
 
                     }
 
-                     popupView.setAnimation(AnimationUtils.loadAnimation(context,R.anim.myanim));
-                     // create the popup window
-                     // lets taps outside the popup also dismiss it
-                     boolean focusable = true;
-                     popupWindow = new PopupWindow(popupView,1000,1400,focusable);
-                     //animation for the popup window
 
-                     popupWindow.setAnimationStyle(R.anim.myanim);
-                     //display the popup window
-                     popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                     popupWindow.setOutsideTouchable(false);
-              }
+                    popupView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.myanim));
+                    // create the popup window
+                    // lets taps outside the popup also dismiss it
+                    boolean focusable = true;
+                    popupWindow = new PopupWindow(popupView, 1000, 1400, focusable);
+                    //animation for the popup window
+
+                    popupWindow.setAnimationStyle(R.anim.myanim);
+                    //display the popup window
+                    popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                    popupWindow.setOutsideTouchable(false);
+                }
+            }
+
             });
 
         }

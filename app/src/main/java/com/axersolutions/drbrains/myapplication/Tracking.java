@@ -100,7 +100,7 @@ public class Tracking extends AppCompatActivity {
                     x = Integer.parseInt(String.valueOf(dataSnapshot.child("x").getValue()));
                     y = Integer.parseInt(String.valueOf(dataSnapshot.child("y").getValue()));
                     animal_name = String.valueOf(dataSnapshot.child("name").getValue());
-                    time =  String.valueOf(dataSnapshot.child("time").getValue());
+                    time =  String.valueOf(dataSnapshot.child("last_seen").getValue());
                     animal_location1 = String.valueOf(dataSnapshot.child("animal_location").getValue());
 
 

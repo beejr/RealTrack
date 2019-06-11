@@ -1,6 +1,5 @@
 package com.axersolutions.drbrains.myapplication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -61,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
     // Search EditText
     EditText inputSearch;
 
-
-
     // ArrayList for Listview
     ArrayList<HashMap<String, String>> productList;
 
@@ -77,13 +74,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe);
-
-       // CardView cardView_animal_list = findViewById(R.id.card_view_animal_list);
-
-
-
-
-
         //Code for animal list search
 
         final List<String> animals =SplashActivity.animal_list;
@@ -97,10 +87,6 @@ public class MainActivity extends AppCompatActivity {
         final List<String> animals_cam2 = new ArrayList<>();
         for(int i=0;i<animalsdata_cam2.size();i++)
             animals_cam2.add(animalsdata_cam2.get(i).getAnimal_name());
-
-
-
-
 
         EditText st = findViewById(R.id.search_box);
         final LinearLayout animals_list_ll = findViewById(R.id.animal_list_ll);
@@ -130,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
             tv.setTextSize(20);
             tv.setPadding(20,20,20,20);
             tv.setTextColor(Color.parseColor("#1A237E"));
-//          parent.setBackgroundColor(Color.parseColor("#FFDFDFDF"));
 
             parent.setBackgroundResource(R.drawable.curved_search_bg);
             parent.setTag(animals.get(i).toLowerCase());
@@ -171,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
         //Implement dynamic search
         st.addTextChangedListener(new TextWatcher() {
 
@@ -221,84 +205,41 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-
-
-
-
-
-//        list_adapter_animal = new TestAdapter(this,R.layout.list_item,animal_list);
-//        listView.setAdapter(list_adapter_animal);
-
-        /*mTestAdapter = new TestAdapter(this,R.layout.list_item,animal_list);
-        lv.setAdapter(mTestAdapter);
-        lv.setBackgroundColor(Color.BLUE);
-*/
-
         String camera_list[] = SplashActivity.camera_list.toArray(new String[SplashActivity.camera_list.size()]);
 
-//        // Adding items to listview
-/*
-        list_adapter_camera = new ArrayAdapter<String>(this, R.layout.list_item, R.id.camera_name,camera_list);
-        lv.setAdapter(list_adapter_camera);
-*/
-
-
-
-
-
-//REST CODE
+    //REST CODE
         final LinearLayout camera_view_container = findViewById(R.id.camera_view_container);
         final LinearLayout animal_view_container = findViewById(R.id.animal_view_container);
 
-
-
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.swing_up_left);
-        // search = (EditText)findViewById(R.id.search);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.startAnimation(animation);
 
-
         adapter = new AnimalAdapter(this, animalDataArrayList);
 
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
         Switch simpleSwitch = (Switch) findViewById(R.id.toggle_view);
-
         simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.v("Switch State=", ""+isChecked);
-
-                //to reset the calendar
-
-
-
                 if(isChecked){
-
                     animal_view_container.setVisibility(View.GONE);
                     camera_view_container.setVisibility(View.VISIBLE);
-
-
                 }
                 else
                 {
-
                     camera_view_container.setVisibility(View.GONE);
                     animal_view_container.setVisibility(View.VISIBLE);
-
                 }
-
             }
         });
-
-
-
     swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
+
             recreate();
 
         }
@@ -314,22 +255,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void refreshme(View view){
-        Toast.makeText(this, "refresh aayi", Toast.LENGTH_SHORT).show();
-        /*LinearLayout camera_view_container = findViewById(R.id.camera_view_container);
-        //camera_view_container.removeAllViews();
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        */
-        this.recreate();
-        RecyclerView camera_view_container = findViewById(R.id.recyclerView);
-        Toast.makeText(this, "there are "+camera_view_container.getChildCount()+"childeren", Toast.LENGTH_SHORT).show();
-
-        for(int index = 0; index<((ViewGroup)camera_view_container).getChildCount(); ++index) {
-            View nextChild = ((ViewGroup)camera_view_container).getChildAt(index);
-            if(index>2)
-                camera_view_container.removeView(nextChild);
-
-        }
-    }
 }
